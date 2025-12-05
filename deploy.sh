@@ -28,7 +28,7 @@ ACTION=${1:-deploy}
 case $ACTION in
     build)
         echo -e "${YELLOW}Building Docker image...${NC}"
-        docker-compose -f docker-compose.prod.yml build --no-cache
+        docker compose -f docker-compose.prod.yml build --no-cache
         echo -e "${GREEN}Build completed!${NC}"
         ;;
     
@@ -36,37 +36,37 @@ case $ACTION in
         echo -e "${YELLOW}Deploying application...${NC}"
         
         # Stop existing container if running
-        docker-compose -f docker-compose.prod.yml down 2>/dev/null || true
+        docker compose -f docker-compose.prod.yml down 2>/dev/null || true
         
         # Build and start
-        docker-compose -f docker-compose.prod.yml build
-        docker-compose -f docker-compose.prod.yml up -d
+        docker compose -f docker-compose.prod.yml build
+        docker compose -f docker-compose.prod.yml up -d
         
         echo -e "${GREEN}Deployment completed!${NC}"
         echo -e "${YELLOW}Checking container status...${NC}"
-        docker-compose -f docker-compose.prod.yml ps
+        docker compose -f docker-compose.prod.yml ps
         ;;
     
     stop)
         echo -e "${YELLOW}Stopping application...${NC}"
-        docker-compose -f docker-compose.prod.yml down
+        docker compose -f docker-compose.prod.yml down
         echo -e "${GREEN}Application stopped!${NC}"
         ;;
     
     restart)
         echo -e "${YELLOW}Restarting application...${NC}"
-        docker-compose -f docker-compose.prod.yml restart
+        docker compose -f docker-compose.prod.yml restart
         echo -e "${GREEN}Application restarted!${NC}"
         ;;
     
     logs)
         echo -e "${YELLOW}Showing logs...${NC}"
-        docker-compose -f docker-compose.prod.yml logs -f
+        docker compose -f docker-compose.prod.yml logs -f
         ;;
     
     status)
         echo -e "${YELLOW}Container status:${NC}"
-        docker-compose -f docker-compose.prod.yml ps
+        docker compose -f docker-compose.prod.yml ps
         echo ""
         echo -e "${YELLOW}Container health:${NC}"
         docker inspect --format='{{.State.Health.Status}}' personal-trainer-web 2>/dev/null || echo "Container not found"
