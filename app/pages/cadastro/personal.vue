@@ -210,82 +210,8 @@
                 </div>
               </div>
 
-              <!-- Step 4: Endereço -->
+              <!-- Step 4: Senha -->
               <div v-show="currentStep === 4" class="space-y-6">
-                <div class="grid grid-cols-3 gap-4">
-                  <div class="col-span-2">
-                    <FormField
-                      v-model="form.endereco.cep"
-                      label="CEP"
-                      icon="lucide:map-pin"
-                      placeholder="00000-000"
-                      @input="formatCep"
-                      @blur="buscarCep"
-                      maxlength="9"
-                    />
-                  </div>
-                  <div class="flex items-end">
-                    <button 
-                      type="button"
-                      @click="buscarCep"
-                      :disabled="loadingCep"
-                      class="w-full px-4 py-3.5 bg-primary-500 hover:bg-primary-600 text-white rounded-xl transition-all disabled:opacity-50"
-                    >
-                      <Icon v-if="loadingCep" name="lucide:loader-2" class="w-5 h-5 animate-spin mx-auto" />
-                      <span v-else>Buscar</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="grid sm:grid-cols-3 gap-4">
-                  <div class="sm:col-span-2">
-                    <FormField
-                      v-model="form.endereco.rua"
-                      label="Rua"
-                      icon="lucide:map"
-                      placeholder="Nome da rua"
-                    />
-                  </div>
-                  <FormField
-                    v-model="form.endereco.numero"
-                    label="Número"
-                    placeholder="123"
-                  />
-                </div>
-
-                <FormField
-                  v-model="form.endereco.complemento"
-                  label="Complemento"
-                  icon="lucide:home"
-                  placeholder="Apto, sala, etc (opcional)"
-                />
-
-                <div class="grid sm:grid-cols-2 gap-4">
-                  <FormField
-                    v-model="form.endereco.bairro"
-                    label="Bairro"
-                    icon="lucide:map-pin"
-                    placeholder="Seu bairro"
-                  />
-                  <FormField
-                    v-model="form.endereco.cidade"
-                    label="Cidade"
-                    icon="lucide:building-2"
-                    placeholder="Sua cidade"
-                  />
-                </div>
-
-                <FormField
-                  v-model="form.endereco.estado"
-                  label="Estado"
-                  icon="lucide:map"
-                  placeholder="SP"
-                  maxlength="2"
-                />
-              </div>
-
-              <!-- Step 5: Senha -->
-              <div v-show="currentStep === 5" class="space-y-6">
                 <div>
                   <label class="block text-sm font-semibold text-gray-700 mb-2">
                     Senha <span class="text-red-500">*</span>
@@ -430,9 +356,8 @@
 
 <script setup lang="ts">
 const currentStep = ref(1)
-const totalSteps = 5
+const totalSteps = 4
 const loading = ref(false)
-const loadingCep = ref(false)
 const success = ref(false)
 const error = ref('')
 const showPassword = ref(false)
@@ -447,15 +372,6 @@ const form = reactive({
   cpf: '',
   cnpj: '',
   cref: '',
-  endereco: {
-    cep: '',
-    rua: '',
-    numero: '',
-    complemento: '',
-    bairro: '',
-    cidade: '',
-    estado: ''
-  },
   password: '',
   confirmPassword: '',
   aceitoTermos: false
@@ -490,11 +406,6 @@ const stepConfig = {
     icon: 'lucide:award'
   },
   4: {
-    title: 'Endereço',
-    description: 'Onde você atende seus alunos?',
-    icon: 'lucide:map-pin'
-  },
-  5: {
     title: 'Segurança',
     description: 'Crie uma senha forte para sua conta',
     icon: 'lucide:lock'
@@ -598,10 +509,6 @@ const validateStep = () => {
       isValid = !errors.cref
       break
     case 4:
-      // Endereço é opcional
-      isValid = true
-      break
-    case 5:
       validateField('password')
       validateField('confirmPassword')
       if (!form.aceitoTermos) {
@@ -651,16 +558,7 @@ const handleSubmit = async () => {
         dataNascimento: form.dataNascimento || undefined,
         cpf: form.tipoDocumento === 'cpf' ? form.cpf.replace(/\D/g, '') : undefined,
         cnpj: form.tipoDocumento === 'cnpj' ? form.cnpj.replace(/\D/g, '') : undefined,
-        cref: form.cref,
-        endereco: {
-          cep: form.endereco.cep?.replace(/\D/g, '') || undefined,
-          rua: form.endereco.rua || undefined,
-          numero: form.endereco.numero || undefined,
-          complemento: form.endereco.complemento || undefined,
-          bairro: form.endereco.bairro || undefined,
-          cidade: form.endereco.cidade || undefined,
-          estado: form.endereco.estado || undefined
-        }
+        cref: form.cref
       }
     })
 
@@ -718,34 +616,6 @@ const formatCref = (e: Event) => {
     form.cref = `${numbers}-${letter}/`
   } else {
     form.cref = value
-  }
-}
-
-const formatCep = (e: Event) => {
-  const input = e.target as HTMLInputElement
-  let value = input.value.replace(/\D/g, '')
-  if (value.length > 8) value = value.slice(0, 8)
-  form.endereco.cep = value.replace(/(\d{5})(\d{3})/, '$1-$2')
-}
-
-const buscarCep = async () => {
-  const cep = form.endereco.cep.replace(/\D/g, '')
-  if (cep.length !== 8) return
-
-  loadingCep.value = true
-
-  try {
-    const response = await $fetch(`https://viacep.com.br/ws/${cep}/json/`)
-    if (!response.erro) {
-      form.endereco.rua = response.logradouro
-      form.endereco.bairro = response.bairro
-      form.endereco.cidade = response.localidade
-      form.endereco.estado = response.uf
-    }
-  } catch (e) {
-    console.error('Erro ao buscar CEP', e)
-  } finally {
-    loadingCep.value = false
   }
 }
 
