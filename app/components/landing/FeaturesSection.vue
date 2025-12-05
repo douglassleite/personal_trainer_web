@@ -38,7 +38,7 @@
 
       <!-- Bottom CTA -->
       <div class="text-center mt-16">
-        <NuxtLink to="/cadastro" class="btn btn-primary text-lg">
+        <NuxtLink to="/recursos" class="btn btn-primary text-lg">
           Explorar Todos os Recursos
           <Icon name="lucide:arrow-right" class="w-5 h-5" />
         </NuxtLink>

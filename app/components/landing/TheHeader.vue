@@ -1,7 +1,7 @@
 <template>
   <header 
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-transparent'"
+    :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-white shadow-sm'"
   >
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
       <nav class="flex items-center justify-between h-20">
@@ -17,21 +17,21 @@
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-8">
-          <a 
+          <NuxtLink 
             v-for="item in navItems" 
             :key="item.href"
-            :href="item.href"
-            class="text-gray-600 hover:text-primary-500 font-medium transition-colors"
+            :to="isHomePage ? item.href : '/' + item.href"
+            class="font-medium transition-colors text-gray-600 hover:text-primary-500"
           >
             {{ item.label }}
-          </a>
+          </NuxtLink>
         </div>
 
         <!-- CTA Buttons -->
         <div class="hidden md:flex items-center gap-4">
           <NuxtLink 
             to="/login" 
-            class="text-gray-600 hover:text-primary-500 font-medium transition-colors"
+            class="font-medium transition-colors text-gray-600 hover:text-primary-500"
           >
             Entrar
           </NuxtLink>
@@ -46,11 +46,11 @@
         <!-- Mobile Menu Button -->
         <button 
           @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          class="md:hidden p-2 rounded-lg transition-colors hover:bg-gray-100"
         >
           <Icon 
             :name="isMobileMenuOpen ? 'lucide:x' : 'lucide:menu'" 
-            class="w-6 h-6 text-gray-700" 
+            class="w-6 h-6 text-gray-700"
           />
         </button>
       </nav>
@@ -69,15 +69,15 @@
           class="md:hidden py-4 border-t border-gray-100"
         >
           <div class="flex flex-col gap-4">
-            <a 
+            <NuxtLink 
               v-for="item in navItems" 
               :key="item.href"
-              :href="item.href"
-              class="text-gray-600 hover:text-primary-500 font-medium transition-colors py-2"
+              :to="isHomePage ? item.href : '/' + item.href"
+              class="font-medium transition-colors py-2 text-gray-600 hover:text-primary-500"
               @click="isMobileMenuOpen = false"
             >
               {{ item.label }}
-            </a>
+            </NuxtLink>
             <div class="flex flex-col gap-3 pt-4 border-t border-gray-100">
               <NuxtLink to="/login" class="btn btn-secondary w-full">
                 Entrar
@@ -94,8 +94,11 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+
+const isHomePage = computed(() => route.path === '/')
 
 const navItems = [
   { label: 'Recursos', href: '#recursos' },
