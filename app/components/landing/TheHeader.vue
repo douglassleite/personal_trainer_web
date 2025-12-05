@@ -20,7 +20,7 @@
           <NuxtLink 
             v-for="item in navItems" 
             :key="item.href"
-            :to="isHomePage ? item.href : '/' + item.href"
+            :to="item.href"
             class="font-medium transition-colors text-gray-600 hover:text-primary-500"
           >
             {{ item.label }}
@@ -72,7 +72,7 @@
             <NuxtLink 
               v-for="item in navItems" 
               :key="item.href"
-              :to="isHomePage ? item.href : '/' + item.href"
+              :to="item.href"
               class="font-medium transition-colors py-2 text-gray-600 hover:text-primary-500"
               @click="isMobileMenuOpen = false"
             >
@@ -101,9 +101,9 @@ const isMobileMenuOpen = ref(false)
 const isHomePage = computed(() => route.path === '/')
 
 const navItems = [
-  { label: 'Recursos', href: '#recursos' },
+  { label: 'Recursos', href: '/recursos' },
+  { label: 'Sobre', href: '/sobre' },
   { label: 'Como Funciona', href: '#como-funciona' },
-  { label: 'Planos', href: '#planos' },
   { label: 'Depoimentos', href: '#depoimentos' },
 ]
 
