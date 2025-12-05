@@ -1,48 +1,64 @@
 <template>
-  <section id="como-funciona" class="py-24 bg-white overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8">
+  <section id="como-funciona" class="relative py-32 bg-gradient-to-br from-gray-50 via-white to-purple-50 overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-40 left-20 w-[400px] h-[400px] bg-purple-400/10 rounded-full blur-3xl" />
+      <div class="absolute bottom-20 right-20 w-[500px] h-[500px] bg-primary-400/10 rounded-full blur-3xl" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
       <!-- Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-100 mb-4">
-          <Icon name="lucide:rocket" class="w-4 h-4 text-accent-500" />
-          <span class="text-sm font-medium text-accent-600">Simples e Rápido</span>
+      <div class="text-center mb-20 animate-fade-in">
+        <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-accent-50 to-green-50 border border-accent-200/50 mb-6">
+          <Icon name="lucide:zap" class="w-4 h-4 text-accent-600" />
+          <span class="text-sm font-bold text-accent-700">Rápido & Fácil</span>
         </div>
-        <h2 class="section-title mb-4">
-          Como funciona para
-          <span class="text-primary-500">Personal</span> e <span class="text-accent-500">Aluno</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
+          Como funciona?
+          <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-purple-600 to-accent-600">
+            É simples assim
+          </span>
         </h2>
-        <p class="section-subtitle">
-          Comece em minutos. Personal cria os treinos, aluno executa e evolui.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Em poucos passos, <strong class="text-primary-600">personals</strong> criam treinos incríveis e 
+          <strong class="text-accent-600">alunos</strong> começam a evoluir
         </p>
       </div>
 
       <!-- Steps -->
-      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+      <div class="grid md:grid-cols-3 gap-10 mb-24">
         <div 
           v-for="(step, index) in steps" 
           :key="step.title"
-          class="relative text-center"
+          class="relative group animate-fade-in"
+          :style="{ animationDelay: `${index * 0.15}s` }"
         >
           <!-- Connector Line -->
           <div 
             v-if="index < steps.length - 1"
-            class="hidden md:block absolute top-16 left-1/2 w-full h-0.5 bg-gradient-to-r from-primary-200 to-accent-200"
-          />
-
-          <!-- Step Number -->
-          <div class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <span class="text-2xl font-bold text-white">{{ index + 1 }}</span>
+            class="hidden md:block absolute top-14 left-[60%] w-[80%] h-1 bg-gradient-to-r from-primary-300 via-purple-300 to-accent-300 rounded-full"
+          >
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-accent-400 rounded-full animate-pulse" />
           </div>
 
-          <!-- Content -->
-          <div class="card bg-gray-50 border-0">
-            <div class="w-14 h-14 rounded-xl mx-auto mb-4" :class="step.bgColor">
-              <div class="w-full h-full flex items-center justify-center">
-                <Icon :name="step.icon" class="w-7 h-7" :class="step.iconColor" />
-              </div>
+          <!-- Step Number Badge -->
+          <div class="relative z-10 w-20 h-20 rounded-3xl bg-gradient-to-br mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-500"
+            :class="step.gradientBg">
+            <div class="absolute inset-0 rounded-3xl bg-white/20 backdrop-blur-sm" />
+            <div class="relative w-full h-full flex items-center justify-center">
+              <span class="text-3xl font-black text-white">{{ index + 1 }}</span>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">{{ step.title }}</h3>
-            <p class="text-gray-600">{{ step.description }}</p>
+          </div>
+
+          <!-- Content Card -->
+          <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 text-center">
+            <div class="w-16 h-16 rounded-2xl mx-auto mb-5 flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform duration-500"
+              :class="step.bgColor">
+              <Icon :name="step.icon" class="w-8 h-8" :class="step.iconColor" />
+            </div>
+            <h3 class="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">{{ step.title }}</h3>
+            <p class="text-gray-600 leading-relaxed">{{ step.description }}</p>
           </div>
         </div>
       </div>
