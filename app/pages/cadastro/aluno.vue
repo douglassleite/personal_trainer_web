@@ -515,8 +515,8 @@ const handleSubmit = async () => {
         nome: form.nome,
         email: form.email,
         telefone: form.telefone.replace(/\D/g, ''),
-        senha: form.password,
-        tipoUsuario: 'aluno',
+        password: form.password,
+        userType: 'ALUNO',
         dataNascimento: form.dataNascimento || undefined,
         objetivo: form.objetivo,
         nivelExperiencia: form.nivelExperiencia
@@ -526,7 +526,8 @@ const handleSubmit = async () => {
     success.value = true
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } catch (e: any) {
-    error.value = e.data?.message || 'Erro ao criar conta. Tente novamente.'
+    console.error('Erro no cadastro:', e)
+    error.value = e.data?.message || e.message || 'Erro ao criar conta. Tente novamente.'
   } finally {
     loading.value = false
   }
