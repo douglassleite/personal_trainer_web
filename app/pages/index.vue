@@ -30,10 +30,10 @@ import CTASection from '~/components/landing/CTASection.vue'
 
 // SEO Meta Tags
 useSeoMeta({
-  title: 'Academia na Mão - Plataforma para Personal Trainers',
-  description: 'A plataforma completa para personal trainers gerenciarem seus alunos, criarem treinos personalizados e acompanharem resultados. Comece grátis!',
+  title: 'Academia na Mão - Plataforma para Personal Trainers e Alunos',
+  description: 'A plataforma completa que conecta personal trainers e alunos. Gerencie treinos personalizados e acompanhe sua evolução em tempo real.',
   ogTitle: 'Academia na Mão - Transforme seu Negócio Fitness',
-  ogDescription: 'Gerencie seus alunos, crie treinos personalizados e acompanhe resultados em tempo real. A ferramenta essencial para personal trainers.',
+  ogDescription: 'Gerencie seus alunos, crie treinos personalizados e acompanhe resultados em tempo real. A ferramenta essencial para personal trainers e alunos.',
   ogImage: '/images/og-image.jpg',
   twitterCard: 'summary_large_image',
 })
