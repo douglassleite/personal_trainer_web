@@ -1,0 +1,158 @@
+<template>
+  <section id="planos" class="py-24 bg-gray-50">
+    <div class="container-section">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 mb-4">
+          <Icon name="lucide:credit-card" class="w-4 h-4 text-primary-500" />
+          <span class="text-sm font-medium text-primary-600">Planos Flexíveis</span>
+        </div>
+        <h2 class="section-title mb-4">
+          Escolha o plano
+          <span class="gradient-text">ideal para você</span>
+        </h2>
+        <p class="section-subtitle">
+          Comece gratuitamente e faça upgrade quando precisar. Sem surpresas.
+        </p>
+      </div>
+
+      <!-- Toggle -->
+      <div class="flex items-center justify-center gap-4 mb-12">
+        <span class="font-medium" :class="!isYearly ? 'text-gray-900' : 'text-gray-400'">Mensal</span>
+        <button 
+          @click="isYearly = !isYearly"
+          class="relative w-14 h-8 rounded-full transition-colors"
+          :class="isYearly ? 'bg-primary-500' : 'bg-gray-300'"
+        >
+          <div 
+            class="absolute top-1 w-6 h-6 rounded-full bg-white shadow-md transition-all"
+            :class="isYearly ? 'left-7' : 'left-1'"
+          />
+        </button>
+        <span class="font-medium" :class="isYearly ? 'text-gray-900' : 'text-gray-400'">
+          Anual
+          <span class="ml-1 text-accent-500 text-sm">(-20%)</span>
+        </span>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div 
+          v-for="plan in plans" 
+          :key="plan.name"
+          class="card relative overflow-hidden"
+          :class="plan.featured ? 'border-2 border-primary-500 shadow-glow' : 'border border-gray-100'"
+        >
+          <!-- Featured Badge -->
+          <div 
+            v-if="plan.featured"
+            class="absolute top-0 right-0 bg-primary-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl"
+          >
+            MAIS POPULAR
+          </div>
+
+          <!-- Plan Info -->
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{{ plan.name }}</h3>
+            <p class="text-gray-500 text-sm">{{ plan.description }}</p>
+          </div>
+
+          <!-- Price -->
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-bold text-gray-900">
+                R$ {{ isYearly ? plan.yearlyPrice : plan.monthlyPrice }}
+              </span>
+              <span class="text-gray-500">/mês</span>
+            </div>
+            <p v-if="isYearly && plan.yearlyPrice > 0" class="text-sm text-accent-500 mt-1">
+              Cobrado anualmente
+            </p>
+          </div>
+
+          <!-- Features -->
+          <ul class="space-y-3 mb-8">
+            <li 
+              v-for="feature in plan.features" 
+              :key="feature"
+              class="flex items-start gap-3"
+            >
+              <Icon name="lucide:check" class="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" />
+              <span class="text-gray-600">{{ feature }}</span>
+            </li>
+          </ul>
+
+          <!-- CTA Button -->
+          <NuxtLink 
+            to="/cadastro"
+            class="btn w-full"
+            :class="plan.featured ? 'btn-primary' : 'btn-outline'"
+          >
+            {{ plan.cta }}
+          </NuxtLink>
+        </div>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="mt-12 text-center">
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-accent-50 border border-accent-100">
+          <Icon name="lucide:shield-check" class="w-5 h-5 text-accent-500" />
+          <span class="text-accent-700 font-medium">Garantia de 30 dias ou seu dinheiro de volta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+const isYearly = ref(false)
+
+const plans = [
+  {
+    name: 'Grátis',
+    description: 'Perfeito para começar',
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    features: [
+      'Até 5 alunos',
+      'Protocolos ilimitados',
+      'App mobile',
+      'Suporte por email',
+    ],
+    cta: 'Começar Grátis',
+    featured: false,
+  },
+  {
+    name: 'Profissional',
+    description: 'Para personal trainers ativos',
+    monthlyPrice: 49,
+    yearlyPrice: 39,
+    features: [
+      'Até 30 alunos',
+      'Protocolos ilimitados',
+      'App mobile + offline',
+      'Relatórios avançados',
+      'Suporte prioritário',
+      'Vídeos personalizados',
+    ],
+    cta: 'Experimentar 14 dias',
+    featured: true,
+  },
+  {
+    name: 'Estúdio',
+    description: 'Para academias e estúdios',
+    monthlyPrice: 149,
+    yearlyPrice: 119,
+    features: [
+      'Alunos ilimitados',
+      'Múltiplos personais',
+      'API e integrações',
+      'Relatórios gerenciais',
+      'Suporte 24/7',
+      'Treinamento da equipe',
+    ],
+    cta: 'Falar com Vendas',
+    featured: false,
+  },
+]
+</script>
