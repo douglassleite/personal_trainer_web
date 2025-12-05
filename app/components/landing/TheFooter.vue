@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-gray-900 text-white pt-16 pb-8">
-    <div class="container-section">
+  <footer class="bg-gray-900 text-white pt-16 pb-8 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <!-- Main Footer -->
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 pb-12 border-b border-gray-800">
         <!-- Brand -->

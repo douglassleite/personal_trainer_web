@@ -6,7 +6,7 @@
       <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent-500/20 rounded-full blur-3xl" />
     </div>
 
-    <div class="container-section">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-3xl mx-auto text-center">
         <!-- Icon -->
         <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center mx-auto mb-8">

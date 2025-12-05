@@ -1,6 +1,6 @@
 <template>
-  <section id="como-funciona" class="py-24 bg-white">
-    <div class="container-section">
+  <section id="como-funciona" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <!-- Header -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-100 mb-4">

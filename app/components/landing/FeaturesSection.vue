@@ -1,6 +1,6 @@
 <template>
-  <section id="recursos" class="py-24 bg-gray-50">
-    <div class="container-section">
+  <section id="recursos" class="py-24 bg-gray-50 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <!-- Header -->
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 mb-4">
