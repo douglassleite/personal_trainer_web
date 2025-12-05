@@ -8,11 +8,11 @@
           <span class="text-sm font-medium text-accent-600">Simples e Rápido</span>
         </div>
         <h2 class="section-title mb-4">
-          Comece em
-          <span class="gradient-text">3 passos simples</span>
+          Como funciona para
+          <span class="text-primary-500">Personal</span> e <span class="text-accent-500">Aluno</span>
         </h2>
         <p class="section-subtitle">
-          Configure sua conta em minutos e comece a gerenciar seus alunos hoje mesmo.
+          Comece em minutos. Personal cria os treinos, aluno executa e evolui.
         </p>
       </div>
 
@@ -85,22 +85,22 @@
 const steps = [
   {
     icon: 'lucide:user-plus',
-    title: 'Crie sua Conta',
-    description: 'Cadastre-se gratuitamente em menos de 2 minutos. Sem cartão de crédito.',
+    title: 'Cadastre-se',
+    description: 'Personal ou aluno, crie sua conta em menos de 2 minutos.',
     bgColor: 'bg-primary-100',
     iconColor: 'text-primary-500',
   },
   {
-    icon: 'lucide:users',
-    title: 'Adicione seus Alunos',
-    description: 'Convide seus alunos para a plataforma e vincule-os à sua conta.',
+    icon: 'lucide:link',
+    title: 'Conecte-se',
+    description: 'Personal convida alunos. Aluno vincula-se ao seu personal trainer.',
     bgColor: 'bg-purple-100',
     iconColor: 'text-purple-500',
   },
   {
-    icon: 'lucide:dumbbell',
-    title: 'Monte os Treinos',
-    description: 'Crie protocolos personalizados e acompanhe o progresso de cada aluno.',
+    icon: 'lucide:trending-up',
+    title: 'Evolua Juntos',
+    description: 'Personal cria treinos, aluno executa. Ambos acompanham a evolução.',
     bgColor: 'bg-accent-100',
     iconColor: 'text-accent-500',
   },

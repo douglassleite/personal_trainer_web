@@ -18,42 +18,26 @@
           Pronto para transformar
           <br />
           <span class="text-transparent bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text">
-            seu negócio fitness?
+            seus treinos?
           </span>
         </h2>
 
         <!-- Subtitle -->
         <p class="text-lg text-gray-300 mb-10 max-w-xl mx-auto">
-          Junte-se a centenas de personal trainers que já estão usando o 
-          Academia na Mão para crescer e escalar seus resultados.
+          Seja você <strong class="text-primary-400">personal trainer</strong> ou 
+          <strong class="text-accent-400">aluno</strong>, comece agora e alcance resultados incríveis.
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <NuxtLink to="/cadastro" class="btn btn-primary text-lg px-10 py-4">
-            Começar Grátis Agora
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <NuxtLink to="/cadastro" class="btn btn-primary text-lg px-8 py-4">
+            Sou Personal Trainer
             <Icon name="lucide:arrow-right" class="w-5 h-5" />
           </NuxtLink>
-          <a href="#" class="btn bg-white/10 text-white hover:bg-white/20 text-lg px-10 py-4">
-            <Icon name="lucide:calendar" class="w-5 h-5" />
-            Agendar Demonstração
-          </a>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-          <div class="flex items-center gap-2">
-            <Icon name="lucide:check-circle-2" class="w-5 h-5 text-accent-400" />
-            <span>Grátis para começar</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <Icon name="lucide:check-circle-2" class="w-5 h-5 text-accent-400" />
-            <span>Sem cartão de crédito</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <Icon name="lucide:check-circle-2" class="w-5 h-5 text-accent-400" />
-            <span>Cancele quando quiser</span>
-          </div>
+          <NuxtLink to="/cadastro-aluno" class="btn bg-white/10 text-white hover:bg-white/20 text-lg px-8 py-4">
+            <Icon name="lucide:user" class="w-5 h-5" />
+            Sou Aluno
+          </NuxtLink>
         </div>
       </div>
     </div>

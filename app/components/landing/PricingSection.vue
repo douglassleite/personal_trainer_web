@@ -5,14 +5,14 @@
       <div class="text-center mb-16">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 mb-4">
           <Icon name="lucide:credit-card" class="w-4 h-4 text-primary-500" />
-          <span class="text-sm font-medium text-primary-600">Planos Flexíveis</span>
+          <span class="text-sm font-medium text-primary-600">Planos para Personal Trainers</span>
         </div>
         <h2 class="section-title mb-4">
           Escolha o plano
           <span class="gradient-text">ideal para você</span>
         </h2>
         <p class="section-subtitle">
-          Comece gratuitamente e faça upgrade quando precisar. Sem surpresas.
+          Planos para personal trainers. <strong class="text-accent-600">Alunos acessam pelo app!</strong>
         </p>
       </div>
 
@@ -109,17 +109,17 @@ const isYearly = ref(false)
 
 const plans = [
   {
-    name: 'Grátis',
-    description: 'Perfeito para começar',
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    name: 'Starter',
+    description: 'Para começar',
+    monthlyPrice: 29,
+    yearlyPrice: 23,
     features: [
       'Até 5 alunos',
       'Protocolos ilimitados',
       'App mobile',
       'Suporte por email',
     ],
-    cta: 'Começar Grátis',
+    cta: 'Escolher Plano',
     featured: false,
   },
   {
@@ -135,7 +135,7 @@ const plans = [
       'Suporte prioritário',
       'Vídeos personalizados',
     ],
-    cta: 'Experimentar 14 dias',
+    cta: 'Escolher Plano',
     featured: true,
   },
   {

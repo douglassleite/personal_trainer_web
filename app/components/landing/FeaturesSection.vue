@@ -8,12 +8,12 @@
           <span class="text-sm font-medium text-primary-600">Recursos Poderosos</span>
         </div>
         <h2 class="section-title mb-4">
-          Tudo que você precisa para
-          <span class="gradient-text">transformar resultados</span>
+          Benefícios para
+          <span class="text-primary-500">Personal</span> e <span class="text-accent-500">Aluno</span>
         </h2>
         <p class="section-subtitle">
-          Uma plataforma completa desenvolvida pensando em cada detalhe da 
-          experiência do personal trainer e do aluno.
+          Uma plataforma que conecta personal trainers e alunos, oferecendo 
+          ferramentas poderosas para ambos alcançarem seus objetivos.
         </p>
       </div>
 
@@ -51,45 +51,51 @@
 const features = [
   {
     icon: 'lucide:smartphone',
-    title: 'App Mobile Nativo',
-    description: 'Aplicativo Android e iOS com modo offline. Seus alunos acessam treinos em qualquer lugar.',
+    title: 'App Mobile Completo',
+    description: 'Aplicativo Android e iOS com modo offline. Personal gerencia, aluno treina em qualquer lugar.',
     bgColor: 'bg-primary-100',
     iconColor: 'text-primary-500',
+    forWho: 'Ambos',
   },
   {
     icon: 'lucide:video',
     title: 'Vídeos Demonstrativos',
-    description: 'Cada exercício com vídeo explicativo. Execução perfeita garantida para seus alunos.',
+    description: 'Personal adiciona vídeos aos exercícios. Aluno aprende a executar corretamente.',
     bgColor: 'bg-red-100',
     iconColor: 'text-red-500',
+    forWho: 'Ambos',
   },
   {
     icon: 'lucide:clipboard-list',
-    title: 'Protocolos Inteligentes',
-    description: 'Crie protocolos de treino completos e atribua a múltiplos alunos com um clique.',
+    title: 'Treinos Personalizados',
+    description: 'Personal cria protocolos específicos. Aluno recebe treino sob medida para seus objetivos.',
     bgColor: 'bg-purple-100',
     iconColor: 'text-purple-500',
+    forWho: 'Ambos',
   },
   {
     icon: 'lucide:trophy',
-    title: 'Gamificação',
-    description: 'Sistema de XP, conquistas e rankings. Mantenha seus alunos motivados e engajados.',
+    title: 'Gamificação e XP',
+    description: 'Aluno ganha pontos e conquistas. Personal acompanha engajamento e motivação.',
     bgColor: 'bg-yellow-100',
     iconColor: 'text-yellow-600',
+    forWho: 'Aluno',
   },
   {
     icon: 'lucide:bar-chart-3',
-    title: 'Relatórios Detalhados',
-    description: 'Acompanhe evolução, frequência e desempenho de cada aluno em tempo real.',
+    title: 'Acompanhamento de Evolução',
+    description: 'Personal monitora progresso. Aluno visualiza sua evolução e resultados.',
     bgColor: 'bg-accent-100',
     iconColor: 'text-accent-600',
+    forWho: 'Ambos',
   },
   {
-    icon: 'lucide:bell',
-    title: 'Notificações Inteligentes',
-    description: 'Lembretes automáticos de treino. Seus alunos nunca mais esquecem de treinar.',
+    icon: 'lucide:message-circle',
+    title: 'Comunicação Direta',
+    description: 'Chat entre personal e aluno. Tire dúvidas e receba feedback em tempo real.',
     bgColor: 'bg-blue-100',
     iconColor: 'text-blue-500',
+    forWho: 'Ambos',
   },
 ]
 </script>

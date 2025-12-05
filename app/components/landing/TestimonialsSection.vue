@@ -8,11 +8,11 @@
           <span class="text-sm font-medium text-yellow-600">+500 Avaliações 5 Estrelas</span>
         </div>
         <h2 class="section-title mb-4">
-          Veja o que dizem
-          <span class="gradient-text">nossos clientes</span>
+          O que dizem nossos
+          <span class="text-primary-500">personals</span> e <span class="text-accent-500">alunos</span>
         </h2>
         <p class="section-subtitle">
-          Personal trainers de todo Brasil já transformaram seu negócio com o Academia na Mão.
+          Personal trainers e alunos de todo Brasil já transformaram seus resultados com o Academia na Mão.
         </p>
       </div>
 
@@ -71,39 +71,45 @@
 const testimonials = [
   {
     name: 'Rafael Costa',
-    role: 'Personal Trainer há 8 anos',
+    role: 'Personal Trainer',
     quote: 'Finalmente encontrei uma plataforma que entende minhas necessidades. Meus alunos amam o app e a gamificação mantém eles motivados!',
     avatarColor: 'bg-primary-500',
+    type: 'personal',
+  },
+  {
+    name: 'Marina Santos',
+    role: 'Aluna há 6 meses',
+    quote: 'O app me ajuda a não esquecer dos treinos. Os vídeos são ótimos e adoro ver minha evolução semana a semana!',
+    avatarColor: 'bg-accent-500',
+    type: 'aluno',
   },
   {
     name: 'Carla Mendes',
     role: 'Personal e Nutricionista',
     quote: 'A facilidade de criar protocolos e acompanhar a evolução dos alunos me economiza horas por semana. Recomendo demais!',
     avatarColor: 'bg-purple-500',
+    type: 'personal',
   },
   {
-    name: 'Bruno Oliveira',
-    role: 'Dono de Estúdio',
-    quote: 'Usamos o Academia na Mão em todo o estúdio. A gestão de múltiplos personais ficou muito mais simples e organizada.',
-    avatarColor: 'bg-accent-500',
+    name: 'Lucas Oliveira',
+    role: 'Aluno há 1 ano',
+    quote: 'Nunca fui tão constante nos treinos! O sistema de XP e conquistas me motiva muito. Já perdi 15kg!',
+    avatarColor: 'bg-yellow-500',
+    type: 'aluno',
   },
   {
     name: 'Amanda Silva',
     role: 'Personal Online',
     quote: 'Trabalho 100% online e essa plataforma revolucionou meu atendimento. Os vídeos dos exercícios são perfeitos!',
     avatarColor: 'bg-red-500',
+    type: 'personal',
   },
   {
-    name: 'Felipe Santos',
-    role: 'Personal Trainer',
-    quote: 'O modo offline do app é incrível! Meus alunos treinam na academia mesmo sem internet e tudo sincroniza depois.',
-    avatarColor: 'bg-yellow-500',
-  },
-  {
-    name: 'Juliana Ferreira',
-    role: 'Personal e Coach',
-    quote: 'Os relatórios me ajudam a mostrar resultados concretos para meus alunos. Isso aumentou muito a retenção!',
+    name: 'Pedro Henrique',
+    role: 'Aluno há 3 meses',
+    quote: 'Ter meu treino no celular com vídeos de cada exercício mudou tudo. Treino com confiança mesmo sendo iniciante.',
     avatarColor: 'bg-blue-500',
+    type: 'aluno',
   },
 ]
 

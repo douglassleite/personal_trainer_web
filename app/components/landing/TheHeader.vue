@@ -3,7 +3,7 @@
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
     :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-transparent'"
   >
-    <div class="container-section">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
       <nav class="flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center gap-3 group">
@@ -39,7 +39,7 @@
             to="/cadastro" 
             class="btn btn-primary"
           >
-            Começar Grátis
+            Cadastrar
           </NuxtLink>
         </div>
 
@@ -83,7 +83,7 @@
                 Entrar
               </NuxtLink>
               <NuxtLink to="/cadastro" class="btn btn-primary w-full">
-                Começar Grátis
+                Cadastrar
               </NuxtLink>
             </div>
           </div>
