@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.npm/
+npm-debug.log*
+
+# Build output (mantemos para o estágio de build)
+# .output/
+
+# Development
+.nuxt/
+.nitro/
+.cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Test
+coverage/
+.nyc_output/
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Docker files (não precisamos copiar para dentro)
+Dockerfile
+docker-compose*.yml
+.dockerignore
