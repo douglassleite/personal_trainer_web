@@ -7,6 +7,7 @@
     <main>
       <HeroSection />
       <FeaturesSection />
+      <DashboardPreviewSection />
       <HowItWorksSection />
       <TestimonialsSection />
       <PricingSection />
@@ -23,6 +24,7 @@ import TheHeader from '~/components/landing/TheHeader.vue'
 import TheFooter from '~/components/landing/TheFooter.vue'
 import HeroSection from '~/components/landing/HeroSection.vue'
 import FeaturesSection from '~/components/landing/FeaturesSection.vue'
+import DashboardPreviewSection from '~/components/landing/DashboardPreviewSection.vue'
 import HowItWorksSection from '~/components/landing/HowItWorksSection.vue'
 import TestimonialsSection from '~/components/landing/TestimonialsSection.vue'
 import PricingSection from '~/components/landing/PricingSection.vue'
