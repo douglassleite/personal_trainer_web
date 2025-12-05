@@ -50,6 +50,8 @@ export default {
         'float': 'float 6s ease-in-out infinite',
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         'slide-up': 'slideUp 0.5s ease-out forwards',
+        'sparkle': 'sparkle 3s ease-in-out infinite',
+        'gradient': 'gradient 8s linear infinite',
       },
       keyframes: {
         float: {
@@ -64,6 +66,17 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        sparkle: {
+          '0%, 100%': { opacity: '0', transform: 'scale(0)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+      },
+      backgroundSize: {
+        '300%': '300%',
       },
     },
   },
