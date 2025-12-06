@@ -169,7 +169,14 @@ const loadAlunos = async () => {
       }
     })
     
-    alunos.value = response || []
+    // A API retorna objeto paginado: { data: [], pagination: {...} }
+    if (response.data && Array.isArray(response.data)) {
+      alunos.value = response.data
+    } else if (Array.isArray(response)) {
+      alunos.value = response
+    } else {
+      alunos.value = []
+    }
   } catch (error) {
     console.error('Erro ao carregar alunos:', error)
   } finally {

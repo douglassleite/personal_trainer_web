@@ -256,42 +256,85 @@ onMounted(() => {
 const loadStats = async () => {
   try {
     const accessToken = localStorage.getItem('accessToken')
-    if (!accessToken) return
+    if (!accessToken) {
+      console.warn('⚠️ Token não encontrado, redirecionando para login...')
+      navigateTo('/login')
+      return
+    }
+
+    console.log('🔄 Carregando estatísticas...')
+    console.log('🔑 Token presente:', accessToken.substring(0, 20) + '...')
 
     // Buscar total de alunos
     try {
+      console.log('👥 Buscando alunos...')
       const alunosResponse = await $fetch('http://localhost:3001/api/personal/alunos', {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
       })
-      stats.value.totalAlunos = alunosResponse.length || 0
+      console.log('✅ Alunos recebidos:', alunosResponse)
+      
+      // A API retorna objeto paginado: { data: [], pagination: {...} }
+      if (alunosResponse.pagination && typeof alunosResponse.pagination.total === 'number') {
+        stats.value.totalAlunos = alunosResponse.pagination.total
+      } else if (alunosResponse.data && Array.isArray(alunosResponse.data)) {
+        stats.value.totalAlunos = alunosResponse.data.length
+      } else if (Array.isArray(alunosResponse)) {
+        stats.value.totalAlunos = alunosResponse.length
+      } else {
+        stats.value.totalAlunos = 0
+      }
+      console.log('📊 Total de alunos:', stats.value.totalAlunos)
     } catch (e) {
-      console.error('Erro ao buscar alunos:', e)
+      console.error('❌ Erro ao buscar alunos:', e)
+      console.error('Detalhes:', e.data || e.message)
     }
 
     // Buscar leads pendentes
     try {
+      console.log('👤 Buscando leads pendentes...')
       const leadsResponse = await $fetch('http://localhost:3001/api/captacao/personal/leads?status=PENDENTE', {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
       })
-      stats.value.leadsPendentes = leadsResponse.leads?.length || 0
+      console.log('✅ Leads recebidos:', leadsResponse)
+      
+      if (leadsResponse.leads && Array.isArray(leadsResponse.leads)) {
+        stats.value.leadsPendentes = leadsResponse.leads.length
+      } else if (Array.isArray(leadsResponse)) {
+        stats.value.leadsPendentes = leadsResponse.length
+      } else {
+        stats.value.leadsPendentes = 0
+      }
+      console.log('📊 Total de leads pendentes:', stats.value.leadsPendentes)
     } catch (e) {
-      console.error('Erro ao buscar leads:', e)
+      console.error('❌ Erro ao buscar leads:', e)
+      console.error('Detalhes:', e.data || e.message)
     }
 
     // Buscar anamneses não visualizadas
     try {
+      console.log('📋 Buscando anamneses respondidas...')
       const anamnesesResponse = await $fetch('http://localhost:3001/api/anamnese/respondidas/count', {
         headers: {
           'Authorization': `Bearer ${accessToken}`
         }
       })
-      stats.value.anamnesesRespondidas = anamnesesResponse.count || 0
+      console.log('✅ Anamneses recebidas:', anamnesesResponse)
+      
+      if (typeof anamnesesResponse.count === 'number') {
+        stats.value.anamnesesRespondidas = anamnesesResponse.count
+      } else if (typeof anamnesesResponse === 'number') {
+        stats.value.anamnesesRespondidas = anamnesesResponse
+      } else {
+        stats.value.anamnesesRespondidas = 0
+      }
+      console.log('📊 Total de anamneses:', stats.value.anamnesesRespondidas)
     } catch (e) {
-      console.error('Erro ao buscar anamneses:', e)
+      console.error('❌ Erro ao buscar anamneses:', e)
+      console.error('Detalhes:', e.data || e.message)
     }
   } catch (error) {
     console.error('Erro ao carregar estatísticas:', error)
