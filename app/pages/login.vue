@@ -48,7 +48,7 @@
               </label>
               <div class="relative">
                 <input
-                  v-model="loginData.senha"
+                  v-model="loginData.password"
                   :type="showPassword ? 'text' : 'password'"
                   required
                   placeholder="••••••••"
@@ -204,7 +204,7 @@
 <script setup>
 const loginData = ref({
   email: '',
-  senha: ''
+  password: ''
 })
 
 const isLoading = ref(false)
