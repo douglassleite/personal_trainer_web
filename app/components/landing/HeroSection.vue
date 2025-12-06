@@ -1,14 +1,14 @@
 <template>
-  <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
     <!-- Animated Background -->
     <div class="absolute inset-0 -z-10">
       <!-- Gradient Orbs com movimento -->
-      <div class="absolute top-20 left-10 w-[500px] h-[500px] bg-gradient-to-br from-primary-400/30 to-purple-400/30 rounded-full blur-3xl animate-float" style="animation-duration: 8s;" />
-      <div class="absolute bottom-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-accent-400/25 to-green-400/25 rounded-full blur-3xl animate-float" style="animation-duration: 10s; animation-delay: 1s;" />
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-purple-400/15 to-pink-400/15 rounded-full blur-3xl animate-float" style="animation-duration: 12s; animation-delay: 2s;" />
+      <div class="absolute top-20 left-10 w-[500px] h-[500px] bg-gradient-to-br from-primary-400/30 to-purple-400/30 dark:from-primary-400/10 dark:to-purple-400/10 rounded-full blur-3xl animate-float" style="animation-duration: 8s;" />
+      <div class="absolute bottom-20 right-10 w-[600px] h-[600px] bg-gradient-to-br from-accent-400/25 to-green-400/25 dark:from-accent-400/10 dark:to-green-400/10 rounded-full blur-3xl animate-float" style="animation-duration: 10s; animation-delay: 1s;" />
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-purple-400/15 to-pink-400/15 dark:from-purple-400/5 dark:to-pink-400/5 rounded-full blur-3xl animate-float" style="animation-duration: 12s; animation-delay: 2s;" />
       
       <!-- Grid Pattern -->
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
       
       <!-- Sparkles -->
       <div class="absolute inset-0 overflow-hidden">
@@ -29,17 +29,17 @@
         <!-- Left: Content -->
         <div class="text-center lg:text-left space-y-8">
           <!-- Badge -->
-          <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary-50 to-purple-50 border border-primary-200/50 shadow-sm backdrop-blur-sm animate-fade-in">
+          <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/30 dark:to-purple-900/30 border border-primary-200/50 dark:border-primary-700/50 shadow-sm backdrop-blur-sm animate-fade-in">
             <div class="relative flex">
               <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-primary-400 opacity-75"></span>
-              <Icon name="lucide:sparkles" class="relative w-4 h-4 text-primary-600" />
+              <Icon name="lucide:sparkles" class="relative w-4 h-4 text-primary-600 dark:text-primary-400" />
             </div>
-            <span class="text-sm font-semibold text-primary-700">Plataforma Nº1 para Personal Trainers</span>
+            <span class="text-sm font-semibold text-primary-700 dark:text-primary-300">Plataforma Nº1 para Personal Trainers</span>
           </div>
 
           <!-- Title -->
           <div class="space-y-4">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-[1.1] tracking-tight animate-slide-up">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-tight animate-slide-up">
               Sua academia
               <br />
               <span class="relative inline-block">
@@ -61,9 +61,9 @@
           </div>
 
           <!-- Subtitle -->
-          <p class="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-slide-up" style="animation-delay: 0.1s">
-            A plataforma que une <strong class="font-bold text-primary-600">personal trainers</strong> e 
-            <strong class="font-bold text-accent-600">alunos</strong>. Crie treinos, acompanhe evolução 
+          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-slide-up" style="animation-delay: 0.1s">
+            A plataforma que une <strong class="font-bold text-primary-600 dark:text-primary-400">personal trainers</strong> e 
+            <strong class="font-bold text-accent-600 dark:text-accent-400">alunos</strong>. Crie treinos, acompanhe evolução 
             e alcance resultados <span class="relative inline-block">extraordinários
               <svg class="absolute -bottom-1 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
                 <path d="M2 6C50 3 100 2 198 6" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
@@ -85,7 +85,7 @@
             
             <NuxtLink 
               to="/cadastro/aluno" 
-              class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-gray-300 text-gray-700 rounded-2xl font-bold text-lg shadow-md hover:shadow-xl hover:border-accent-500 hover:text-accent-600 hover:scale-105 transition-all duration-300"
+              class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 rounded-2xl font-bold text-lg shadow-md hover:shadow-xl hover:border-accent-500 dark:hover:border-accent-400 hover:text-accent-600 dark:hover:text-accent-400 hover:scale-105 transition-all duration-300"
             >
               <Icon name="lucide:dumbbell" class="w-6 h-6" />
               <span>Sou Aluno</span>

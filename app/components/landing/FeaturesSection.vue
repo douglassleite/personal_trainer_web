@@ -1,28 +1,28 @@
 <template>
-  <section id="recursos" class="relative py-32 bg-gradient-to-br from-white via-gray-50 to-blue-50 overflow-hidden">
+  <section id="recursos" class="relative py-32 bg-gradient-to-br from-white via-gray-50 to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 overflow-hidden transition-colors duration-300">
     <!-- Background Decorations -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute top-20 right-20 w-[400px] h-[400px] bg-primary-400/10 rounded-full blur-3xl" />
-      <div class="absolute bottom-20 left-20 w-[500px] h-[500px] bg-accent-400/10 rounded-full blur-3xl" />
+      <div class="absolute top-20 right-20 w-[400px] h-[400px] bg-primary-400/10 dark:bg-primary-400/5 rounded-full blur-3xl" />
+      <div class="absolute bottom-20 left-20 w-[500px] h-[500px] bg-accent-400/10 dark:bg-accent-400/5 rounded-full blur-3xl" />
     </div>
 
     <div class="max-w-7xl mx-auto px-6 sm:px-8">
       <!-- Header -->
       <div class="text-center mb-20 animate-fade-in">
-        <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary-50 to-purple-50 border border-primary-200/50 mb-6">
-          <Icon name="lucide:sparkles" class="w-4 h-4 text-primary-600" />
-          <span class="text-sm font-bold text-primary-700">Recursos Exclusivos</span>
+        <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/30 dark:to-purple-900/30 border border-primary-200/50 dark:border-primary-700/50 mb-6">
+          <Icon name="lucide:sparkles" class="w-4 h-4 text-primary-600 dark:text-primary-400" />
+          <span class="text-sm font-bold text-primary-700 dark:text-primary-300">Recursos Exclusivos</span>
         </div>
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
           Tudo que você precisa
           <br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-purple-600 to-accent-600">
             em um só lugar
           </span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Ferramentas poderosas que transformam a forma como <strong class="text-primary-600">personal trainers</strong> e 
-          <strong class="text-accent-600">alunos</strong> trabalham juntos
+        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Ferramentas poderosas que transformam a forma como <strong class="text-primary-600 dark:text-primary-400">personal trainers</strong> e 
+          <strong class="text-accent-600 dark:text-accent-400">alunos</strong> trabalham juntos
         </p>
       </div>
 
@@ -31,7 +31,7 @@
         <div 
           v-for="(feature, index) in features" 
           :key="feature.title"
-          class="group relative bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 animate-fade-in overflow-hidden"
+          class="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 transition-all duration-500 animate-fade-in overflow-hidden"
           :style="{ animationDelay: `${index * 0.1}s` }"
         >
           <!-- Hover Gradient -->
@@ -53,10 +53,10 @@
           </div>
           
           <!-- Content -->
-          <h3 class="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+          <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
             {{ feature.title }}
           </h3>
-          <p class="text-gray-600 leading-relaxed mb-4">{{ feature.description }}</p>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">{{ feature.description }}</p>
           
           <!-- For Who Tag -->
           <div class="flex items-center gap-2">
@@ -73,7 +73,7 @@
 
       <!-- Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 animate-fade-in" style="animation-delay: 0.6s;">
-        <div v-for="stat in stats" :key="stat.label" class="text-center bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+        <div v-for="stat in stats" :key="stat.label" class="text-center bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-gray-700">
           <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r mb-2"
             :class="stat.gradient">
             {{ stat.value }}

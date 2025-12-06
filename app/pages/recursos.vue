@@ -1,10 +1,10 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 relative overflow-hidden">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden transition-colors duration-300">
     <!-- Animated Background -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute top-40 right-20 w-[600px] h-[600px] bg-primary-400/10 rounded-full blur-3xl animate-float" style="animation-duration: 10s;" />
-      <div class="absolute bottom-40 left-20 w-[700px] h-[700px] bg-purple-400/10 rounded-full blur-3xl animate-float" style="animation-duration: 12s; animation-delay: 1s;" />
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
+      <div class="absolute top-40 right-20 w-[600px] h-[600px] bg-primary-400/10 dark:bg-primary-400/5 rounded-full blur-3xl animate-float" style="animation-duration: 10s;" />
+      <div class="absolute bottom-40 left-20 w-[700px] h-[700px] bg-purple-400/10 dark:bg-purple-400/5 rounded-full blur-3xl animate-float" style="animation-duration: 12s; animation-delay: 1s;" />
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
     </div>
 
     <!-- Header -->
@@ -36,26 +36,26 @@
         </p>
         
         <!-- Toggle Personal / Aluno -->
-        <div class="inline-flex bg-white/15 backdrop-blur-sm rounded-2xl p-1.5 shadow-2xl border border-white/20 animate-slide-up" style="animation-delay: 0.2s;">
+        <div class="inline-flex bg-primary-100/80 dark:bg-white/20 backdrop-blur-md rounded-2xl p-2 shadow-2xl border border-primary-200/50 dark:border-white/30 animate-slide-up" style="animation-delay: 0.2s;">
           <button 
             @click="activeTab = 'all'"
-            class="px-8 py-3 rounded-xl text-sm font-bold transition-all"
-            :class="activeTab === 'all' ? 'bg-white text-primary-600 shadow-lg' : 'text-white hover:bg-white/10'"
+            class="px-8 py-3.5 rounded-xl text-sm font-bold transition-all"
+            :class="activeTab === 'all' ? 'bg-white text-primary-600 shadow-lg scale-105' : 'text-gray-700 dark:text-white hover:bg-white/50 dark:hover:bg-white/20'"
           >
             Todos
           </button>
           <button 
             @click="activeTab = 'personal'"
-            class="px-8 py-3 rounded-xl text-sm font-bold transition-all"
-            :class="activeTab === 'personal' ? 'bg-white text-primary-600 shadow-lg' : 'text-white hover:bg-white/10'"
+            class="px-8 py-3.5 rounded-xl text-sm font-bold transition-all"
+            :class="activeTab === 'personal' ? 'bg-white text-primary-600 shadow-lg scale-105' : 'text-gray-700 dark:text-white hover:bg-white/50 dark:hover:bg-white/20'"
           >
             <Icon name="lucide:briefcase" class="w-4 h-4 inline mr-2" />
             Personal
           </button>
           <button 
             @click="activeTab = 'aluno'"
-            class="px-8 py-3 rounded-xl text-sm font-bold transition-all"
-            :class="activeTab === 'aluno' ? 'bg-white text-primary-600 shadow-lg' : 'text-white hover:bg-white/10'"
+            class="px-8 py-3.5 rounded-xl text-sm font-bold transition-all"
+            :class="activeTab === 'aluno' ? 'bg-white text-primary-600 shadow-lg scale-105' : 'text-gray-700 dark:text-white hover:bg-white/50 dark:hover:bg-white/20'"
           >
             <Icon name="lucide:dumbbell" class="w-4 h-4 inline mr-2" />
             Aluno

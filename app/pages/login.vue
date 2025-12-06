@@ -1,19 +1,19 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 relative overflow-hidden">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden transition-colors duration-300">
     <!-- Animated Background -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute top-20 right-20 w-[500px] h-[500px] bg-primary-400/10 rounded-full blur-3xl animate-float" style="animation-duration: 8s;" />
-      <div class="absolute bottom-20 left-20 w-[600px] h-[600px] bg-accent-400/10 rounded-full blur-3xl animate-float" style="animation-duration: 10s; animation-delay: 1s;" />
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
+      <div class="absolute top-20 right-20 w-[500px] h-[500px] bg-primary-400/10 dark:bg-primary-400/5 rounded-full blur-3xl animate-float" style="animation-duration: 8s;" />
+      <div class="absolute bottom-20 left-20 w-[600px] h-[600px] bg-accent-400/10 dark:bg-accent-400/5 rounded-full blur-3xl animate-float" style="animation-duration: 10s; animation-delay: 1s;" />
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_60%,transparent_100%)]" />
     </div>
 
     <!-- Header -->
     <TheHeader />
 
     <div class="pt-32 pb-20">
-      <div class="max-w-md mx-auto px-6">
+      <div class="max-w-2xl mx-auto px-6">
         <!-- Card Login -->
-        <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-10 animate-fade-in">
+        <div class="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-10 animate-fade-in transition-colors duration-300">
           <div class="text-center mb-10">
             <div class="relative inline-flex mb-6">
               <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-purple-500 rounded-2xl blur-xl opacity-30 animate-pulse" />
@@ -21,19 +21,19 @@
                 <Icon name="lucide:log-in" class="w-10 h-10 text-white" />
               </div>
             </div>
-            <h1 class="text-4xl font-black text-gray-900 mb-3">Bem-vindo de Volta!</h1>
-            <p class="text-lg text-gray-600">Acesse sua conta pelo aplicativo</p>
+            <h1 class="text-4xl font-black text-gray-900 dark:text-white mb-3">Bem-vindo de Volta!</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300">Acesse sua conta pelo aplicativo</p>
           </div>
 
           <!-- Aviso App -->
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-6 mb-8">
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-2 border-blue-200 dark:border-blue-700 rounded-2xl p-6 mb-8 transition-colors duration-300">
             <div class="flex items-start gap-4">
               <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
                 <Icon name="lucide:smartphone" class="w-6 h-6 text-white" />
               </div>
               <div>
-                <p class="text-base font-bold text-blue-900 mb-2">📱 Acesse pelo App</p>
-                <p class="text-sm text-blue-800 leading-relaxed">
+                <p class="text-base font-bold text-blue-900 dark:text-blue-100 mb-2">📱 Acesse pelo App</p>
+                <p class="text-sm text-blue-800 dark:text-blue-200 leading-relaxed">
                   O login completo está disponível <strong>apenas no aplicativo</strong>. Baixe agora para acessar todas as funcionalidades, treinos e acompanhamento!
                 </p>
               </div>
@@ -81,7 +81,7 @@
 
           <!-- Links -->
           <div class="text-center space-y-5">
-            <p class="text-lg font-semibold text-gray-700">
+            <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Ainda não tem conta?
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -95,7 +95,7 @@
               </NuxtLink>
               <NuxtLink 
                 to="/cadastro/aluno"
-                class="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white border-2 border-accent-500 text-accent-600 font-bold rounded-xl hover:bg-accent-50 hover:scale-105 transition-all duration-300"
+                class="group inline-flex items-center justify-center gap-2 px-6 py-4 bg-white dark:bg-gray-700 border-2 border-accent-500 dark:border-accent-400 text-accent-600 dark:text-accent-300 font-bold rounded-xl hover:bg-accent-50 dark:hover:bg-gray-600 hover:scale-105 transition-all duration-300"
               >
                 <Icon name="lucide:dumbbell" class="w-5 h-5" />
                 <span>Sou Aluno</span>
@@ -107,32 +107,32 @@
         <!-- Features -->
         <div class="mt-10 grid grid-cols-3 gap-4 animate-fade-in" style="animation-delay: 0.2s;">
           <div class="text-center">
-            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-2">
-              <Icon name="lucide:shield-check" class="w-6 h-6 text-primary-600" />
+            <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center mx-auto mb-2">
+              <Icon name="lucide:shield-check" class="w-6 h-6 text-primary-600 dark:text-primary-400" />
             </div>
-            <p class="text-xs font-medium text-gray-600">100% Seguro</p>
+            <p class="text-xs font-medium text-gray-600 dark:text-gray-300">100% Seguro</p>
           </div>
           <div class="text-center">
-            <div class="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center mx-auto mb-2">
-              <Icon name="lucide:zap" class="w-6 h-6 text-accent-600" />
+            <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-xl flex items-center justify-center mx-auto mb-2">
+              <Icon name="lucide:zap" class="w-6 h-6 text-accent-600 dark:text-accent-400" />
             </div>
-            <p class="text-xs font-medium text-gray-600">Setup em 2min</p>
+            <p class="text-xs font-medium text-gray-600 dark:text-gray-300">Setup em 2min</p>
           </div>
           <div class="text-center">
-            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2">
-              <Icon name="lucide:star" class="w-6 h-6 text-purple-600" />
+            <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mx-auto mb-2">
+              <Icon name="lucide:star" class="w-6 h-6 text-purple-600 dark:text-purple-400" />
             </div>
-            <p class="text-xs font-medium text-gray-600">Nota 5.0</p>
+            <p class="text-xs font-medium text-gray-600 dark:text-gray-300">Nota 5.0</p>
           </div>
         </div>
 
         <!-- Info Extra -->
-        <div class="mt-8 text-center text-sm text-gray-500 animate-fade-in" style="animation-delay: 0.3s;">
+        <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 animate-fade-in" style="animation-delay: 0.3s;">
           <p>
             Ao usar o Academia na Mão, você concorda com nossos 
-            <a href="#" class="text-primary-600 hover:underline font-medium">Termos de Uso</a> 
+            <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Termos de Uso</a> 
             e 
-            <a href="#" class="text-primary-600 hover:underline font-medium">Política de Privacidade</a>.
+            <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">Política de Privacidade</a>.
           </p>
         </div>
       </div>

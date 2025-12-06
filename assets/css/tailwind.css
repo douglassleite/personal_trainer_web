@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply font-sans antialiased text-gray-900 bg-white overflow-x-hidden;
+    @apply font-sans antialiased text-gray-900 bg-white dark:text-gray-100 dark:bg-gray-900 overflow-x-hidden;
   }
 }
 
@@ -22,15 +22,15 @@
   }
   
   .btn-secondary {
-    @apply bg-gray-100 text-gray-700 hover:bg-gray-200 active:scale-[0.98];
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 active:scale-[0.98];
   }
   
   .btn-outline {
-    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-50 active:scale-[0.98];
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 active:scale-[0.98];
   }
   
   .card {
-    @apply bg-white rounded-2xl shadow-soft p-6 transition-all duration-300;
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-soft p-6 transition-all duration-300;
   }
   
   .card-hover {
@@ -38,11 +38,11 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white;
   }
   
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-600 max-w-2xl mx-auto;
+    @apply text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto;
   }
   
   .gradient-text {

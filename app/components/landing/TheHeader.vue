@@ -1,7 +1,7 @@
 <template>
   <header 
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    :class="isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft' : 'bg-white shadow-sm'"
+    :class="isScrolled ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-soft' : 'bg-white dark:bg-gray-900 shadow-sm'"
   >
     <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
       <nav class="flex items-center justify-between h-20">
@@ -10,7 +10,7 @@
           <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-glow transition-shadow">
             <Icon name="lucide:dumbbell" class="w-5 h-5 text-white" />
           </div>
-          <span class="text-xl font-bold text-gray-900">
+          <span class="text-xl font-bold text-gray-900 dark:text-white">
             Academia<span class="text-primary-500">NaMão</span>
           </span>
         </NuxtLink>
@@ -21,7 +21,7 @@
             v-for="item in navItems" 
             :key="item.href"
             :to="item.href"
-            class="font-medium transition-colors text-gray-600 hover:text-primary-500"
+            class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
           >
             {{ item.label }}
           </NuxtLink>
@@ -29,9 +29,19 @@
 
         <!-- CTA Buttons -->
         <div class="hidden md:flex items-center gap-4">
+          <button
+            @click="toggleTheme"
+            class="p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+            :title="isDark ? 'Modo Claro' : 'Modo Escuro'"
+          >
+            <Icon 
+              :name="isDark ? 'lucide:sun' : 'lucide:moon'" 
+              class="w-5 h-5 text-gray-600 dark:text-gray-300"
+            />
+          </button>
           <NuxtLink 
             to="/login" 
-            class="font-medium transition-colors text-gray-600 hover:text-primary-500"
+            class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
           >
             Entrar
           </NuxtLink>
@@ -46,11 +56,11 @@
         <!-- Mobile Menu Button -->
         <button 
           @click="isMobileMenuOpen = !isMobileMenuOpen"
-          class="md:hidden p-2 rounded-lg transition-colors hover:bg-gray-100"
+          class="md:hidden p-2 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
         >
           <Icon 
             :name="isMobileMenuOpen ? 'lucide:x' : 'lucide:menu'" 
-            class="w-6 h-6 text-gray-700"
+            class="w-6 h-6 text-gray-700 dark:text-gray-300"
           />
         </button>
       </nav>
@@ -66,14 +76,24 @@
       >
         <div 
           v-if="isMobileMenuOpen"
-          class="md:hidden py-4 border-t border-gray-100"
+          class="md:hidden py-4 border-t border-gray-100 dark:border-gray-800"
         >
           <div class="flex flex-col gap-4">
+            <button
+              @click="toggleTheme"
+              class="flex items-center gap-2 font-medium transition-colors py-2 text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+            >
+              <Icon 
+                :name="isDark ? 'lucide:sun' : 'lucide:moon'" 
+                class="w-5 h-5"
+              />
+              {{ isDark ? 'Modo Claro' : 'Modo Escuro' }}
+            </button>
             <NuxtLink 
               v-for="item in navItems" 
               :key="item.href"
               :to="item.href"
-              class="font-medium transition-colors py-2 text-gray-600 hover:text-primary-500"
+              class="font-medium transition-colors py-2 text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
               @click="isMobileMenuOpen = false"
             >
               {{ item.label }}
@@ -97,6 +117,7 @@
 const route = useRoute()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+const { isDark, toggleTheme } = useTheme()
 
 const isHomePage = computed(() => route.path === '/')
 
