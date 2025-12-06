@@ -216,6 +216,8 @@ const handleLogin = async () => {
   errorMessage.value = ''
 
   try {
+    console.log('🔐 Iniciando login...', loginData.value.email)
+    
     const response = await $fetch('http://localhost:3001/api/auth/login', {
       method: 'POST',
       headers: {
@@ -224,17 +226,24 @@ const handleLogin = async () => {
       body: JSON.stringify(loginData.value)
     })
 
-    // Salvar token no localStorage
-    if (response.token) {
-      localStorage.setItem('token', response.token)
+    console.log('✅ Login bem-sucedido:', response)
+
+    // Salvar tokens no localStorage
+    if (response.accessToken) {
+      localStorage.setItem('accessToken', response.accessToken)
+      localStorage.setItem('refreshToken', response.refreshToken)
       localStorage.setItem('user', JSON.stringify(response.user))
       
+      console.log('💾 Dados salvos, redirecionando para dashboard...')
+      
       // Redirecionar para dashboard
-      await navigateTo('/dashboard')
+      await navigateTo('/dashboard', { replace: true })
+    } else {
+      throw new Error('Token não recebido do servidor')
     }
   } catch (error) {
-    console.error('Erro ao fazer login:', error)
-    errorMessage.value = error.data?.message || 'Erro ao fazer login. Verifique suas credenciais.'
+    console.error('❌ Erro ao fazer login:', error)
+    errorMessage.value = error.data?.error || error.message || 'Erro ao fazer login. Verifique suas credenciais.'
   } finally {
     isLoading.value = false
   }

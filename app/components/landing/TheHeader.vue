@@ -39,18 +39,39 @@
               class="w-5 h-5 text-gray-600 dark:text-gray-300"
             />
           </button>
-          <NuxtLink 
-            to="/login" 
-            class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
-          >
-            Entrar
-          </NuxtLink>
-          <NuxtLink 
-            to="/cadastro" 
-            class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
-          >
-            Cadastrar
-          </NuxtLink>
+          
+          <!-- Logged In -->
+          <template v-if="isLoggedIn">
+            <NuxtLink 
+              to="/dashboard" 
+              class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+            >
+              Olá, {{ userName }}!
+            </NuxtLink>
+            <button
+              @click="handleLogout"
+              class="font-medium transition-colors text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 flex items-center gap-2"
+            >
+              <Icon name="lucide:log-out" class="w-4 h-4" />
+              Sair
+            </button>
+          </template>
+          
+          <!-- Not Logged In -->
+          <template v-else>
+            <NuxtLink 
+              to="/login" 
+              class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+            >
+              Entrar
+            </NuxtLink>
+            <NuxtLink 
+              to="/cadastro" 
+              class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+            >
+              Cadastrar
+            </NuxtLink>
+          </template>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -98,13 +119,33 @@
             >
               {{ item.label }}
             </NuxtLink>
-            <div class="flex flex-col gap-3 pt-4 border-t border-gray-100">
-              <NuxtLink to="/login" class="btn btn-secondary w-full">
-                Entrar
-              </NuxtLink>
-              <NuxtLink to="/cadastro" class="btn btn-primary w-full">
-                Cadastrar
-              </NuxtLink>
+            
+            <!-- Mobile Logged In / Not Logged In -->
+            <div class="flex flex-col gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <template v-if="isLoggedIn">
+                <NuxtLink 
+                  to="/dashboard" 
+                  class="btn btn-secondary w-full"
+                  @click="isMobileMenuOpen = false"
+                >
+                  Olá, {{ userName }}!
+                </NuxtLink>
+                <button
+                  @click="handleLogout"
+                  class="btn bg-red-600 hover:bg-red-700 text-white w-full flex items-center justify-center gap-2"
+                >
+                  <Icon name="lucide:log-out" class="w-4 h-4" />
+                  Sair
+                </button>
+              </template>
+              <template v-else>
+                <NuxtLink to="/login" class="btn btn-secondary w-full">
+                  Entrar
+                </NuxtLink>
+                <NuxtLink to="/cadastro" class="btn btn-primary w-full">
+                  Cadastrar
+                </NuxtLink>
+              </template>
             </div>
           </div>
         </div>
@@ -119,6 +160,9 @@ const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const { isDark, toggleTheme } = useTheme()
 
+const isLoggedIn = ref(false)
+const userName = ref('')
+
 const isHomePage = computed(() => route.path === '/')
 
 const navItems = [
@@ -130,6 +174,7 @@ const navItems = [
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  checkLoginStatus()
 })
 
 onUnmounted(() => {
@@ -138,5 +183,29 @@ onUnmounted(() => {
 
 function handleScroll() {
   isScrolled.value = window.scrollY > 20
+}
+
+function checkLoginStatus() {
+  if (import.meta.client) {
+    const token = localStorage.getItem('accessToken')
+    const userData = localStorage.getItem('user')
+    
+    if (token && userData) {
+      isLoggedIn.value = true
+      const user = JSON.parse(userData)
+      userName.value = user.nome || 'Personal'
+    }
+  }
+}
+
+function handleLogout() {
+  if (import.meta.client) {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    localStorage.removeItem('user')
+    isLoggedIn.value = false
+    userName.value = ''
+    navigateTo('/login')
+  }
 }
 </script>
