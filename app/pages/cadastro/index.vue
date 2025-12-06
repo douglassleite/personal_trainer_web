@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
+  <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
     <!-- Header -->
     <TheHeader />
 
@@ -10,13 +10,13 @@
           <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500 via-purple-500 to-accent-500 rounded-3xl mb-8 shadow-2xl animate-pulse-slow">
             <Icon name="lucide:sparkles" class="w-10 h-10 text-white" />
           </div>
-          <h1 class="text-6xl font-black text-gray-900 mb-6 tracking-tight">
+          <h1 class="text-6xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
             Transforme sua
             <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-purple-600 to-accent-600 mt-2">
               Jornada Fitness
             </span>
           </h1>
-          <p class="text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
+          <p class="text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
             Cadastre-se em menos de 2 minutos e comece hoje mesmo
           </p>
         </div>
@@ -26,14 +26,14 @@
           <!-- Card Personal Trainer -->
           <NuxtLink 
             to="/cadastro/personal"
-            class="group relative bg-white rounded-[2rem] p-12 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl border border-gray-100"
+            class="group relative bg-white dark:bg-gray-800 rounded-[2rem] p-12 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl border border-gray-100 dark:border-gray-700"
           >
             <!-- Background gradient on hover -->
             <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-purple-500/5 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div class="relative z-10">
               <!-- Badge -->
-              <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-bold mb-6">
+              <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-bold mb-6">
                 <Icon name="lucide:trending-up" class="w-4 h-4" />
                 Para Profissionais
               </div>
@@ -44,30 +44,30 @@
               </div>
 
               <!-- Content -->
-              <h2 class="text-4xl font-black text-gray-900 mb-4">
+              <h2 class="text-4xl font-black text-gray-900 dark:text-white mb-4">
                 Personal<br/>Trainer
               </h2>
-              <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p class="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
                 Gerencie alunos, crie treinos personalizados e acompanhe resultados
               </p>
 
               <!-- Features -->
               <ul class="space-y-3 mb-10">
-                <li class="flex items-center gap-3 text-gray-700">
-                  <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Icon name="lucide:check" class="w-4 h-4 text-green-600" />
+                <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                  <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="lucide:check" class="w-4 h-4 text-green-600 dark:text-green-400" />
                   </div>
                   <span>Alunos ilimitados</span>
                 </li>
-                <li class="flex items-center gap-3 text-gray-700">
-                  <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Icon name="lucide:check" class="w-4 h-4 text-green-600" />
+                <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                  <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="lucide:check" class="w-4 h-4 text-green-600 dark:text-green-400" />
                   </div>
                   <span>Biblioteca de +500 exercícios</span>
                 </li>
-                <li class="flex items-center gap-3 text-gray-700">
-                  <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Icon name="lucide:check" class="w-4 h-4 text-green-600" />
+                <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                  <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="lucide:check" class="w-4 h-4 text-green-600 dark:text-green-400" />
                   </div>
                   <span>Link de captação único</span>
                 </li>
@@ -84,14 +84,14 @@
           <!-- Card Aluno -->
           <NuxtLink 
             to="/cadastro/aluno"
-            class="group relative bg-white rounded-[2rem] p-12 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl border border-gray-100"
+            class="group relative bg-white dark:bg-gray-800 rounded-[2rem] p-12 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl border border-gray-100 dark:border-gray-700"
           >
             <!-- Background gradient on hover -->
             <div class="absolute inset-0 bg-gradient-to-br from-accent-500/5 via-green-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div class="relative z-10">
               <!-- Badge -->
-              <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent-100 text-accent-700 rounded-full text-sm font-bold mb-6">
+              <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent-100 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 rounded-full text-sm font-bold mb-6">
                 <Icon name="lucide:zap" class="w-4 h-4" />
                 Para Atletas
               </div>
@@ -102,30 +102,30 @@
               </div>
 
               <!-- Content -->
-              <h2 class="text-4xl font-black text-gray-900 mb-4">
+              <h2 class="text-4xl font-black text-gray-900 dark:text-white mb-4">
                 Aluno
               </h2>
-              <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p class="text-gray-600 dark:text-gray-300 text-lg mb-8 leading-relaxed">
                 Receba treinos, acompanhe evolução e alcance seus objetivos
               </p>
 
               <!-- Features -->
               <ul class="space-y-3 mb-10">
-                <li class="flex items-center gap-3 text-gray-700">
-                  <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Icon name="lucide:check" class="w-4 h-4 text-green-600" />
+                <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                  <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="lucide:check" class="w-4 h-4 text-green-600 dark:text-green-400" />
                   </div>
                   <span>Treinos personalizados</span>
                 </li>
-                <li class="flex items-center gap-3 text-gray-700">
-                  <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Icon name="lucide:check" class="w-4 h-4 text-green-600" />
+                <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                  <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="lucide:check" class="w-4 h-4 text-green-600 dark:text-green-400" />
                   </div>
                   <span>Vídeos demonstrativos</span>
                 </li>
-                <li class="flex items-center gap-3 text-gray-700">
-                  <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                    <Icon name="lucide:check" class="w-4 h-4 text-green-600" />
+                <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                  <div class="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="lucide:check" class="w-4 h-4 text-green-600 dark:text-green-400" />
                   </div>
                   <span>Tracking e conquistas</span>
                 </li>
