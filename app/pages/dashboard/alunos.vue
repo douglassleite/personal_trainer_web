@@ -285,6 +285,88 @@
       </div>
     </div>
 
+    <!-- Modal Desvincular Aluno -->
+    <div v-if="showDesvincularModal && alunoParaDesvincular" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6" @click="cancelarDesvinculacao">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8" @click.stop>
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Desvincular Aluno</h2>
+          <button @click="cancelarDesvinculacao" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+            <Icon name="lucide:x" class="w-6 h-6" />
+          </button>
+        </div>
+        
+        <div class="mb-6">
+          <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+              {{ getInitials(alunoParaDesvincular.nome) }}
+            </div>
+            <div>
+              <p class="font-bold text-gray-900 dark:text-white">{{ alunoParaDesvincular.nome }}</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{ alunoParaDesvincular.email }}</p>
+            </div>
+          </div>
+
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-4 mb-6">
+            <div class="flex items-start gap-3">
+              <Icon name="lucide:alert-triangle" class="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <p class="text-sm font-semibold text-yellow-800 dark:text-yellow-300 mb-1">
+                  Atenção: Esta ação não pode ser desfeita
+                </p>
+                <p class="text-sm text-yellow-700 dark:text-yellow-400">
+                  Escolha como deseja proceder com o histórico de treinos do aluno:
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <button
+              @click="confirmarDesvinculacao(false)"
+              :disabled="isDeleting"
+              class="w-full p-4 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <div class="flex items-start gap-3">
+                <Icon name="lucide:save" class="w-6 h-6 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                <div class="text-left flex-1">
+                  <p class="font-bold text-gray-900 dark:text-white mb-1">Manter Histórico</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    O aluno será desvinculado mas seu histórico de treinos permanecerá salvo
+                  </p>
+                </div>
+                <Icon name="lucide:chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+              </div>
+            </button>
+
+            <button
+              @click="confirmarDesvinculacao(true)"
+              :disabled="isDeleting"
+              class="w-full p-4 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl hover:bg-red-100 dark:hover:bg-red-900/30 hover:border-red-300 dark:hover:border-red-700 transition-all duration-300 group disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <div class="flex items-start gap-3">
+                <Icon name="lucide:trash-2" class="w-6 h-6 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                <div class="text-left flex-1">
+                  <p class="font-bold text-gray-900 dark:text-white mb-1">Remover Histórico</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    O aluno e todo seu histórico de treinos serão removidos permanentemente
+                  </p>
+                </div>
+                <Icon name="lucide:chevron-right" class="w-5 h-5 text-gray-400 group-hover:text-red-600 dark:group-hover:text-red-400 group-hover:translate-x-1 transition-all" />
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <button
+          @click="cancelarDesvinculacao"
+          :disabled="isDeleting"
+          class="w-full px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+
     <!-- Modal Detalhe do Aluno -->
     <div v-if="selectedAluno" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6" @click="selectedAluno = null">
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
@@ -374,8 +456,11 @@ const isLoading = ref(true)
 const alunos = ref([])
 const showCriarModal = ref(false)
 const showVincularModal = ref(false)
+const showDesvincularModal = ref(false)
+const alunoParaDesvincular = ref(null)
 const selectedAluno = ref(null)
 const isSaving = ref(false)
+const isDeleting = ref(false)
 const errorMessage = ref('')
 const showPasswordCriar = ref(false)
 
@@ -460,19 +545,24 @@ const criarAluno = async () => {
   }
 }
 
-const desvincularAluno = async (aluno) => {
-  const confirmacao = confirm(
-    `Deseja desvincular ${aluno.nome}?\n\nOs treinos vinculados a este aluno ficarão disponíveis como treinos genéricos.\n\nDeseja também remover o histórico de treinos realizados?`
-  )
-  
-  if (!confirmacao) return
+const desvincularAluno = (aluno) => {
+  alunoParaDesvincular.value = aluno
+  showDesvincularModal.value = true
+}
 
-  const removerHistorico = confirm('Remover histórico de treinos?')
+const cancelarDesvinculacao = () => {
+  showDesvincularModal.value = false
+  alunoParaDesvincular.value = null
+}
+
+const confirmarDesvinculacao = async (removerHistorico) => {
+  if (!alunoParaDesvincular.value) return
 
   try {
+    isDeleting.value = true
     const accessToken = localStorage.getItem('accessToken')
     
-    await $fetch(`http://localhost:3001/api/personal/alunos/${aluno.id}`, {
+    await $fetch(`http://localhost:3001/api/personal/alunos/${alunoParaDesvincular.value.id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${accessToken}`
@@ -482,13 +572,18 @@ const desvincularAluno = async (aluno) => {
       }
     })
 
+    showDesvincularModal.value = false
+    alunoParaDesvincular.value = null
     await loadAlunos()
+    
     alert(removerHistorico 
-      ? 'Aluno desvinculado e histórico removido com sucesso'
-      : 'Aluno desvinculado com sucesso (histórico mantido)')
+      ? 'Aluno desvinculado e histórico removido com sucesso!'
+      : 'Aluno desvinculado com sucesso! O histórico foi mantido.')
   } catch (error) {
     console.error('Erro ao desvincular aluno:', error)
     alert('Erro ao desvincular aluno. Tente novamente.')
+  } finally {
+    isDeleting.value = false
   }
 }
 
