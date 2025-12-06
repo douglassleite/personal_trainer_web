@@ -22,33 +22,101 @@
               </div>
             </div>
             <h1 class="text-4xl font-black text-gray-900 dark:text-white mb-3">Bem-vindo de Volta!</h1>
-            <p class="text-lg text-gray-600 dark:text-gray-300">Acesse sua conta pelo aplicativo</p>
+            <p class="text-lg text-gray-600 dark:text-gray-300">Faça login para acessar sua conta</p>
           </div>
 
-          <!-- Aviso App -->
+          <!-- Login Form - Personal Trainers -->
+          <form @submit.prevent="handleLogin" class="space-y-6 mb-8">
+            <!-- Email -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                E-mail
+              </label>
+              <input
+                v-model="loginData.email"
+                type="email"
+                required
+                placeholder="seu@email.com"
+                class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none transition-colors"
+              />
+            </div>
+
+            <!-- Senha -->
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                Senha
+              </label>
+              <div class="relative">
+                <input
+                  v-model="loginData.senha"
+                  :type="showPassword ? 'text' : 'password'"
+                  required
+                  placeholder="••••••••"
+                  class="w-full px-4 py-3 pr-12 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none transition-colors"
+                />
+                <button
+                  type="button"
+                  @click="showPassword = !showPassword"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                >
+                  <Icon :name="showPassword ? 'lucide:eye-off' : 'lucide:eye'" class="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            <!-- Error Message -->
+            <div v-if="errorMessage" class="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+              <p class="text-sm text-red-600 dark:text-red-400 font-medium">{{ errorMessage }}</p>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              :disabled="isLoading"
+              class="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold py-4 rounded-xl hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span v-if="!isLoading">Entrar como Personal Trainer</span>
+              <span v-else class="flex items-center justify-center gap-2">
+                <Icon name="lucide:loader-2" class="w-5 h-5 animate-spin" />
+                Entrando...
+              </span>
+            </button>
+          </form>
+
+          <!-- Divider -->
+          <div class="relative mb-8">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t-2 border-gray-200 dark:border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+              <span class="bg-white dark:bg-gray-800 px-4 text-sm font-semibold text-gray-500 dark:text-gray-400">Alunos</span>
+            </div>
+          </div>
+
+          <!-- Aviso App para Alunos -->
           <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-2 border-blue-200 dark:border-blue-700 rounded-2xl p-6 mb-8 transition-colors duration-300">
             <div class="flex items-start gap-4">
               <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
                 <Icon name="lucide:smartphone" class="w-6 h-6 text-white" />
               </div>
               <div>
-                <p class="text-base font-bold text-blue-900 dark:text-blue-100 mb-2">📱 Acesse pelo App</p>
+                <p class="text-base font-bold text-blue-900 dark:text-blue-100 mb-2">📱 Alunos: Acesse pelo App</p>
                 <p class="text-sm text-blue-800 dark:text-blue-200 leading-relaxed">
-                  O login completo está disponível <strong>apenas no aplicativo</strong>. Baixe agora para acessar todas as funcionalidades, treinos e acompanhamento!
+                  O acesso para <strong>alunos</strong> está disponível <strong>apenas no aplicativo</strong>. Baixe agora para acessar seus treinos e acompanhamento!
                 </p>
               </div>
             </div>
           </div>
 
           <!-- Download App -->
-          <div class="relative bg-gradient-to-br from-primary-600 via-purple-600 to-primary-700 rounded-2xl p-8 text-white mb-8 overflow-hidden shadow-2xl">
+          <div class="relative bg-gradient-to-br from-primary-600 via-purple-600 to-primary-700 rounded-2xl p-8 text-white overflow-hidden shadow-2xl">
             <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:2rem_2rem]" />
             <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
             
             <div class="relative z-10">
               <div class="flex items-center justify-center gap-2 mb-6">
                 <Icon name="lucide:download" class="w-6 h-6" />
-                <p class="text-xl font-black">Baixe o App Agora</p>
+                <p class="text-xl font-black">Baixe o App para Alunos</p>
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <a href="#" class="group flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 rounded-xl p-4 border border-white/20 hover:scale-105">
@@ -69,18 +137,8 @@
             </div>
           </div>
 
-          <!-- Divider -->
-          <div class="relative mb-8">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t-2 border-gray-200"></div>
-            </div>
-            <div class="relative flex justify-center">
-              <span class="bg-white px-4 text-sm font-semibold text-gray-500">OU</span>
-            </div>
-          </div>
-
           <!-- Links -->
-          <div class="text-center space-y-5">
+          <div class="text-center space-y-5 mt-8">
             <p class="text-lg font-semibold text-gray-700 dark:text-gray-300">
               Ainda não tem conta?
             </p>
@@ -144,11 +202,49 @@
 </template>
 
 <script setup>
+const loginData = ref({
+  email: '',
+  senha: ''
+})
+
+const isLoading = ref(false)
+const errorMessage = ref('')
+const showPassword = ref(false)
+
+const handleLogin = async () => {
+  isLoading.value = true
+  errorMessage.value = ''
+
+  try {
+    const response = await $fetch('http://localhost:3001/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(loginData.value)
+    })
+
+    // Salvar token no localStorage
+    if (response.token) {
+      localStorage.setItem('token', response.token)
+      localStorage.setItem('user', JSON.stringify(response.user))
+      
+      // Redirecionar para dashboard
+      await navigateTo('/dashboard')
+    }
+  } catch (error) {
+    console.error('Erro ao fazer login:', error)
+    errorMessage.value = error.data?.message || 'Erro ao fazer login. Verifique suas credenciais.'
+  } finally {
+    isLoading.value = false
+  }
+}
+
 // SEO
 useHead({
   title: 'Login - Academia na Mão',
   meta: [
-    { name: 'description', content: 'Faça login no Academia na Mão pelo aplicativo e acesse todos os seus treinos personalizados.' }
+    { name: 'description', content: 'Faça login no Academia na Mão. Personal trainers acessam via web ou app. Alunos acessam apenas pelo app.' }
   ]
 })
 </script>
