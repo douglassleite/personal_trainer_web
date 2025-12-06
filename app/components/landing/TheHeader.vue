@@ -47,7 +47,7 @@
           </NuxtLink>
           <NuxtLink 
             to="/cadastro" 
-            class="btn btn-primary"
+            class="font-medium transition-colors text-gray-600 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
           >
             Cadastrar
           </NuxtLink>
